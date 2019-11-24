@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body th:object="${weather}">
+<div th:replace="toolbar::search"></div>
+<h1 th:text="*{getTownName()+', '+getSys().getCountry()}" th:align="center"></h1>
+<img th:src="*{getImage()}" class="rounded mx-auto d-block">
+<h2 th:text="*{getDesc().get(0).getDescription()}" th:align="center"></h2>
+<ul class="list-group" th:align="center">
+    <li class="list-group-item" th:text="*{'Temperatura: '+getMainData().getTemp().intValue()+'°C'}"></li>
+    <li class="list-group-item" th:text="*{'Ciśnienie: '+getMainData().getPressure()+'hPa'}"></li>
+    <li class="list-group-item" th:text="*{'Wilgotność: '+getMainData().getHumidity()+'%'}"></li>
+    <li class="list-group-item" th:text="*{'Prędkość wiatru: '+getWind().getSpeed()+'m/s'}"></li>
+</ul>
+
+</body>
+<div th:replace="links::links"></div>
+</html>
